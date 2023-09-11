@@ -13,7 +13,9 @@ public class Roles {
     @GeneratedValue
     private long id;
     private String role;
+
     public Roles(){}
+
     public Roles(String role){
         this.role = role;
     }

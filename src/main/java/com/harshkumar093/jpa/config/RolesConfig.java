@@ -3,7 +3,6 @@ package com.harshkumar093.jpa.config;
 import com.harshkumar093.jpa.model.role.Roles;
 import com.harshkumar093.jpa.repo.RolesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration

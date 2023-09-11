@@ -1,6 +1,7 @@
 package com.harshkumar093.jpa;
 
 import com.harshkumar093.jpa.payload.request.RegisterUserRequest;
+import com.harshkumar093.jpa.payload.request.UserLoginRequest;
 import com.harshkumar093.jpa.payload.response.RegisterUserResponse;
 import com.harshkumar093.jpa.payload.response.ResponseMessage;
 import com.harshkumar093.jpa.service.user.CoreUserService;
@@ -19,8 +20,13 @@ public class TestController {
     public ResponseMessage<String> welcome(){
         return new ResponseMessage<>("200","Welcome to auth-ext");
     }
-    @PostMapping("/register")
+    @PostMapping("/sign-up")
     public ResponseMessage<RegisterUserResponse> registerUser(@RequestBody RegisterUserRequest registerUserRequest){
         return coreUserService.registerUser(registerUserRequest);
+    }
+
+    @PostMapping("/sign-in")
+    public ResponseMessage loginUser(@RequestBody UserLoginRequest userLoginRequest){
+        return this.coreUserService.login(userLoginRequest);
     }
 }

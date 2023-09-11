@@ -5,15 +5,18 @@ import com.harshkumar093.jpa.model.user.CoreUser;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Data
 public class CoreRole extends UserExtension {
-    @ManyToOne
+    @ManyToMany
     @JoinColumn(name = "roles_id", referencedColumnName = "id")
-    private Roles roles;
+    private List<Roles> roles;
 
-    public CoreRole(CoreUser coreUser, Roles roles){
+    public CoreRole(CoreUser coreUser, List<Roles> roles){
         this.roles = roles;
         this.setCoreUser(coreUser);
     }
+    public CoreRole(){}
 }
