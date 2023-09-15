@@ -1,5 +1,6 @@
 package com.harshkumar093.jpa;
 
+import com.harshkumar093.jpa.annotation.RequireRole;
 import com.harshkumar093.jpa.payload.request.RegisterUserRequest;
 import com.harshkumar093.jpa.payload.request.UserLoginRequest;
 import com.harshkumar093.jpa.payload.response.RegisterUserResponse;
@@ -17,7 +18,9 @@ public class TestController {
     CoreUserService coreUserService;
 
     @GetMapping("/")
+    @RequireRole({"USER","LEAD"})
     public ResponseMessage<String> welcome(){
+        System.out.println("In controller");
         return new ResponseMessage<>("200","Welcome to auth-ext");
     }
     @PostMapping("/sign-up")
