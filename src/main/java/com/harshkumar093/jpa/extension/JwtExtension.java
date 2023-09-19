@@ -35,4 +35,8 @@ public class JwtExtension {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.convertValue(claims.get("roles"), new TypeReference<List<Roles>>() {});
     }
+
+    public boolean validateJwt(String token){
+        return jwtConfig.validateToken(token);
+    }
 }

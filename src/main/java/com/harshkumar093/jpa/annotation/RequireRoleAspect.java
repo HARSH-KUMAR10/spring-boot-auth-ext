@@ -1,8 +1,6 @@
 package com.harshkumar093.jpa.annotation;
-import com.harshkumar093.jpa.config.JwtConfig;
 import com.harshkumar093.jpa.extension.JwtExtension;
 import com.harshkumar093.jpa.model.role.Roles;
-import jakarta.servlet.http.HttpServletRequest;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;

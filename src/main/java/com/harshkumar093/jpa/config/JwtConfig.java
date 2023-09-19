@@ -1,5 +1,6 @@
 package com.harshkumar093.jpa.config;
 
+import com.harshkumar093.jpa.annotation.ForbiddenResourceException;
 import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -39,14 +40,19 @@ public class JwtConfig {
             return true;
         } catch (MalformedJwtException e) {
             System.out.println("Invalid JWT token: {}"+ e.getMessage());
+            throw new ForbiddenResourceException(403, e.getMessage());
         } catch (ExpiredJwtException e) {
             System.out.println("JWT token is expired: {}"+ e.getMessage());
+            throw new ForbiddenResourceException(403, e.getMessage());
         } catch (UnsupportedJwtException e) {
             System.out.println("JWT token is unsupported: {}"+ e.getMessage());
+            throw new ForbiddenResourceException(403, e.getMessage());
         } catch (IllegalArgumentException e) {
             System.out.println("JWT claims string is empty: {}"+ e.getMessage());
+            throw new ForbiddenResourceException(403, e.getMessage());
+        } catch (Exception e){
+            System.out.println("Some exception with jwt occured"+e.getMessage());
+            throw new ForbiddenResourceException(403, e.getMessage());
         }
-
-        return false;
     }
 }

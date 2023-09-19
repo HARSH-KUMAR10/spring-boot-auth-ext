@@ -1,5 +1,6 @@
 package com.harshkumar093.jpa;
 
+import com.harshkumar093.jpa.config.ModuleConfig;
 import com.harshkumar093.jpa.config.RolesConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -12,6 +13,9 @@ public class JpaApplication implements CommandLineRunner {
 	@Autowired
 	RolesConfig rolesConfig;
 
+	@Autowired
+	ModuleConfig moduleConfig;
+
 	public static void main(String[] args) {
 		SpringApplication.run(JpaApplication.class, args);
 	}
@@ -21,6 +25,11 @@ public class JpaApplication implements CommandLineRunner {
 			System.out.println("New roles added");
 		}else{
 			System.out.println("Failed to set roles");
+		}
+		if(moduleConfig.setModules(new String[]{"ORDER","PRODUCT","PAYMENT","SUBSCRIPTION"})){
+			System.out.println("New modules added");
+		}else{
+			System.out.println("Failed to set modules");
 		}
 	}
 
